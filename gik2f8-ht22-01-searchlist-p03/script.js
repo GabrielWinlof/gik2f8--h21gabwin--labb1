@@ -26,13 +26,11 @@ function renderBookList(bookList) {
   existingElement && root.removeChild(existingElement);
   bookList.length > 0 && searchField.value && root.insertAdjacentHTML('beforeend', BookList(bookList));
   const booklista = document.querySelectorAll('.book-list__item');
-  console.log(booklista);
   booklista.forEach(bookloop);
 }
 
 function bookloop(book){
   book.addEventListener("mouseover", (event) => {
-    console.log(event.pageX);
     let x = event.pageX;
     let y = event.pageY;
   const bookdetails = getBookDetails(event.target.id).then((booke)=> {
@@ -40,7 +38,6 @@ function bookloop(book){
    ID: ${booke.id} <br> Title: ${booke.title} <br> Author: ${booke.author} <br> Pages: ${booke.pages} <br> ReleseDate: ${booke.releaseDate}  
   <img src ="${booke.coverImage}" width="100px" height = "200px" onerror="this.style.display='none'" </img></div>`
   book.insertAdjacentHTML("beforeend", html);
-  console.log(booke);
     });
   });
   book.addEventListener("mouseout", (event) => {
